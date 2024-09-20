@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stages Predictor - Counter Current</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .form-container {
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result_counter {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+        #error {
+            margin-top: 20px;
+            font-size: 18px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Stages Predictor - Counter Current</h1>
+        <form action="/counter" method="post">
+            <label for="alpha">Enter Alpha Value:</label>
+            <input type="text" id="alpha" name="alpha" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result_counter is defined %}
+            <div id="result_counter">
+                <p>Input Value of Alpha: {{ input_alpha }}</p>
+                <p>Predicted Stages for Counter: {{ result_counter }}</p>
+            </div>
+        {% endif %}
+
+        {% if error is defined %}
+            <div id="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
